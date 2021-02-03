@@ -1,0 +1,7 @@
+1. Install Docker and ddev (s. https://ddev.readthedocs.io/)
+2. git clone https://github.com/qbnm/Berlussimo.git berlussimo
+3. ddev config --project-type=laravel --docroot=public
+4. ddev start
+5. ddev composer install
+6. ddev exec "cat .env.example | sed  -E 's/DB_(HOST|DATABASE|USERNAME|PASSWORD)=(.*)/DB_\1=db/g' > .env"
+7. ddev restart
