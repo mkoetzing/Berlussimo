@@ -18,15 +18,15 @@ webimage_extra_packages: [php7.0-gd, php7.0-mysql, php7.0-fpm, php7.0-xml, php7.
 hooks:
   post-composer:
     - exec: sudo apt-get update
-    - exec: sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_8.x | bash - sudo apt-get install -y nodejs
+    #- exec: curl -sL https://deb.nodesource.com/setup_8.x | bash - sudo apt-get install -y nodejs
     #- exec: sudo apt-get remove -y nginx
     #- exec: sudo apt-get install -y nginx nginx-common libnginx-mod-nchan git nasm pwgen
-    - exec: wget http://ftp.de.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb -P /tmp/ && sudo apt install -y /tmp/libpng12-0_1.2.50-2+deb8u3_amd64.deb
-    - exec: sudo apt-get install -y build-essential
-    - exec: mysql -uroot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.0.sql && mysql -uroot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.1.sql && mysql -uroot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.2.sql && mysql -uroot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.3.sql && mysql -uroot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.4.sql
+    #- exec: wget http://ftp.de.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb -P /tmp/ && sudo apt install -y /tmp/libpng12-0_1.2.50-2+deb8u3_amd64.deb
+    #- exec: sudo apt-get install -y build-essential
+    - exec: mysql -uroot -proot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.0.sql && mysql -uroot -proot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.1.sql && mysql -uroot -proot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.2.sql && mysql -uroot -proot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.3.sql && mysql -uroot -proot db < /var/www/html/install/DB-Version-0.4.0/berlussimo_db_0.4.4.sql
     - exec: php artisan passport:install
     - exec: php artisan migrate && php artisan optimize && php artisan route:cache && php artisan parser:generate
-    - exec: npm install && npm run prod
+    - exec: npm install node-sass@^4.0.0 && npm i -f && npm install && npm run prod
     #- exec: nohup php artisan queue:work --daemon &
 
 # This config.yaml was created with ddev version v1.16.3
