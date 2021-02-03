@@ -1,6 +1,13 @@
 <?php
 
-require __DIR__.'/../../public/index.php';
+// bootstrap a minimal Laravel for the AJAX request (just build the basics, don't execute the request itself)
+require __DIR__.'/../../bootstrap/autoload.php';
+$app = require_once __DIR__.'/../../bootstrap/app.php';
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
 
 $option = request()->input('option');
 /* Optionsschalter */
@@ -183,6 +190,7 @@ ORDER BY LPAD( EINHEIT_KURZNAME, LENGTH( EINHEIT_KURZNAME ) ,  '1' ) ASC ");
             $result = DB::select("SELECT PARTNER_NAME, PARTNER_ID FROM PARTNER_LIEFERANT WHERE AKTUELL='1' ORDER BY PARTNER_NAME ASC");
             foreach ($result as $row) {
                 $PARTNER_NAME1 = str_replace('<br>', ' ', $row['PARTNER_NAME']);
+                ob_clean();
                 echo "$PARTNER_NAME1*$row[PARTNER_ID]*|";
             }
         }
