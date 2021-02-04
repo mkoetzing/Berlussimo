@@ -293,6 +293,7 @@ ORDER BY LPAD( EINHEIT_KURZNAME, LENGTH( EINHEIT_KURZNAME ) ,  '1' ) ASC ");
         $blz = request()->input('blz');
         $sep = new sepa ();
         $sep->get_iban_bic($kto, $blz);
+        ob_clean();
         echo "$sep->IBAN1|$sep->BIC|$sep->BANKNAME_K";
         break;
 

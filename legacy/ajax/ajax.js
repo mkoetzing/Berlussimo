@@ -1184,7 +1184,7 @@ function get_iban_bic(kto_feld, blz_feld) {
         alert("Konnte Ajax-Objekt nicht erzeugen!");
 
     //Anfrageurl zusammenstellen
-    var my_url = 'sepa/calculateIbanBic/' + kto + '/' + blz;
+    var my_url = 'ajax/ajax_info.php?option=get_iban_bic' + '&kto=' + kto + '&blz=' + blz;
     req.open("GET", my_url, true);
 
     //Beim Abschliessen der Anfrage wird diese Funktion ausgeführt
