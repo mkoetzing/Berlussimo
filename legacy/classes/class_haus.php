@@ -36,7 +36,7 @@ class haus extends objekt {
         $f->text_feld ( "Strasse", "strasse", "$this->haus_strasse", "50", 'strasse', '' );
         $f->text_feld ( "Hausnummer", "haus_nr", "$this->haus_nummer", "10", 'hausnr', '' );
         $f->text_feld ( "Ort", "ort", "$this->haus_stadt", "50", 'ort', '' );
-        $f->text_feld ( "Plz", "plz", "$this->haus_plz", "10", 'plz', '' );
+        $f->text_feld ( "PLZ", "plz", "$this->haus_plz", "10", 'plz', '' );
         $this->haus_qm_a = nummer_punkt2komma ( $this->haus_qm );
         $f->text_feld ( "Grösse in qm", "qm", "$this->haus_qm_a", "10", 'qm', '' );
 
@@ -59,7 +59,7 @@ class haus extends objekt {
                 $f->text_feld ( "Strasse", "strasse", "", "50", 'strasse', '' );
                 $f->text_feld ( "Hausnummer", "haus_nr", "", "10", 'hausnr', '' );
                 $f->text_feld ( "Ort", "ort", "", "50", 'ort', '' );
-                $f->text_feld ( "Plz", "plz", "", "10", 'plz', '' );
+                $f->text_feld ( "PLZ", "plz", "", "10", 'plz', '' );
                 $f->text_feld ( "Größe in m²", "qm", "", "10", 'qm', '' );
                 $f->hidden_feld ( "objekt_id", "$objekt_id" );
                 $f->hidden_feld ( "daten_rein", "haus_speichern" );

@@ -81,7 +81,7 @@
                                                         </template>
                                                     </template>
                                                     <template v-else-if="item.type === 'aggregate'">
-                                                        Count({{item.entities.length}})
+                                                        [{{item.entities.length}}]
                                                     </template>
                                                 </template>
                                             </template>

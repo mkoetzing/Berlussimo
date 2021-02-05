@@ -982,7 +982,7 @@ function mietvertrag_kurz($einheit_id)
                 $beenden_link = "Abgelaufen";
                 $aendern_link = "<a href='" . route('web::mietvertraege::legacy', ['mietvertrag_raus' => 'mietvertrag_aendern', 'mietvertrag_id' => $row['MIETVERTRAG_ID']]) . "'>Ändern</a>";
             }
-            $MIETVERTRAG_BIS = date_mysql2german($row['MIETVERTRAG_BIS']);
+            $MIETVERTRAG_BIS = $row['MIETVERTRAG_BIS'] !== '0000-00-00' ? date_mysql2german($row['MIETVERTRAG_BIS']) : 'unbefristet';
             $MIETVERTRAG_VON = date_mysql2german($row['MIETVERTRAG_VON']);
             $mieter_im_vetrag = anzahl_mieter_im_vertrag($row['MIETVERTRAG_ID']);
             $einheit_kurzname = einheit_kurzname($row['EINHEIT_ID']);
@@ -1045,7 +1045,7 @@ function mietvertrag_abgelaufen($einheit_id)
                 $beenden_link = "Abgelaufen";
                 $aendern_link = "k.Ä.";
             }
-            $MIETVERTRAG_BIS = date_mysql2german($row['MIETVERTRAG_BIS']);
+            $MIETVERTRAG_BIS = $row['MIETVERTRAG_BIS'] !== '0000-00-00' ? date_mysql2german($row['MIETVERTRAG_BIS']) : 'unbefristet';
             $MIETVERTRAG_VON = date_mysql2german($row['MIETVERTRAG_VON']);
             $mieter_im_vetrag = anzahl_mieter_im_vertrag($row['MIETVERTRAG_ID']);
             $einheit_kurzname = einheit_kurzname($row['EINHEIT_ID']);
@@ -1109,7 +1109,7 @@ function mietvertrag_aktuelle($einheit_id)
                 $beenden_link = "Abgelaufen";
                 $aendern_link = "<a href='" . route('web::mietvertraege::legacy', ['mietvertrag_raus' => 'mietvertrag_aendern', 'mietvertrag_id' => $row['MIETVERTRAG_ID']]) . "'>Ändern</a>";
             }
-            $MIETVERTRAG_BIS = date_mysql2german($row['MIETVERTRAG_BIS']);
+            $MIETVERTRAG_BIS = $row['MIETVERTRAG_BIS'] !== '0000-00-00' ? date_mysql2german($row['MIETVERTRAG_BIS']) : 'unbefristet';
             $MIETVERTRAG_VON = date_mysql2german($row['MIETVERTRAG_VON']);
             $mieter_im_vetrag = anzahl_mieter_im_vertrag($row['MIETVERTRAG_ID']);
             $einheit_kurzname = einheit_kurzname($row['EINHEIT_ID']);
