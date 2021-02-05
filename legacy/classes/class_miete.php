@@ -361,6 +361,9 @@ class miete
                 $datum1_zahlung_s = str_replace('-', '', $datum1_zahlung);
                 $datums_arr [] = $datum1_zahlung_s;
             }
+            /** leeres Datum löschen */
+            $datums_arr = array_diff( $datums_arr, ['00000000']);
+
             /* älteres wählen und als Startdatum setzen */
             $anfangs_datum = min($datums_arr);
             $this->start_m = substr($anfangs_datum, 4, 2);
@@ -380,6 +383,9 @@ class miete
             }
             /* Wenn MD oder 1 Zahlung definiert */
             if (is_array($datums_arr)) {
+                /** leeres Datum löschen */
+                $datums_arr = array_diff( $datums_arr, ['00000000']);
+
                 /* älteres Datum nehmen, da Zahlung vor Definition sein kann */
                 $anfangs_datum = min($datums_arr);
                 $this->start_m = substr($anfangs_datum, 4, 2);
@@ -394,6 +400,12 @@ class miete
         }
 
         /* jahresschleife */
+        if ($this->end_j === '0000') {
+            $this->end_j = $this->jahr_aktuell;
+        }
+        if ($this->end_m === '00') {
+            $this->end_m = $this->monat_aktuell;
+        }
         for ($a = $this->start_j; $a <= $this->end_j; $a++) {
             /* anfangs und endjahr gleich */
             if ($a == $this->start_j && $a == $this->end_j) {
