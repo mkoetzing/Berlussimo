@@ -1063,7 +1063,11 @@ ORDER BY BUCHUNGSNUMMER DESC");
 
         $geldkonto_ids_string = implode(', ', $geldkonto_ids);
 
-        $result = DB::select("SELECT DATUM FROM GELD_KONTO_BUCHUNGEN WHERE KOSTENTRAEGER_TYP='Mietvertrag' && KOSTENTRAEGER_ID = '$mietvertrag_id' && GELDKONTO_ID IN ($geldkonto_ids_string) && AKTUELL = '1' ORDER BY DATUM ASC LIMIT 0,1");
+        if (!empty($geldkonto_ids_string)) {
+            $result = DB::select("SELECT DATUM FROM GELD_KONTO_BUCHUNGEN WHERE KOSTENTRAEGER_TYP='Mietvertrag' && KOSTENTRAEGER_ID = '$mietvertrag_id' && GELDKONTO_ID IN ($geldkonto_ids_string) && AKTUELL = '1' ORDER BY DATUM ASC LIMIT 0,1");
+        } else {
+            $result = '';
+        }
         return $result[0]['DATUM'];
     }
 
