@@ -110,6 +110,32 @@ server {
                 fastcgi_read_timeout 600;
         }
 
+        location ^~ /ajax/ajax_info.php {
+            #return 402; root /var/www/legacy;
+                alias /var/www/berlussimo/legacy;
+
+                try_files $uri $uri/ $uri?$query_string;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+                fastcgi_read_timeout 600;
+
+
+                #try_files $uri $uri/ /index.php?$query_string;
+                #fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                #fastcgi_pass unix:/run/php7.0-fpm.sock;
+                #fastcgi_buffers 16 16k;
+                #fastcgi_buffer_size 32k;
+                #fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                #fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+                #fastcgi_index index.php;
+                #include fastcgi_params;
+                #fastcgi_intercept_errors off;
+                #fastcgi_read_timeout 10m;
+                #fastcgi_param SERVER_NAME $host;
+        }
 
         # pass PHP scripts to FastCGI server
         #
