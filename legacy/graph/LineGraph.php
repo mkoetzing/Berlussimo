@@ -317,7 +317,7 @@ class LineGraph {
 		/**
 		 *	Outputs the graph.
 		 *
-		 *	@return TRUE if output suceeded, FALSE if not
+		 *	@return TRUE if output succeeded, FALSE if not
 		 */
 		
 		outputSVGHeader();
