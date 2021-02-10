@@ -562,30 +562,32 @@ class LineGraph {
 				echo '</g>' . "\n";
 			}
 			private function outputAverages() {
-				if(isset($this->averages['total'])) {
-					echo
-						'<line ' .
-							'id="totalAverageLine" ' .
-							'x1="0" ' .
-							'y1="'.(($this->maxValue - $this->averages['total']) / ($this->maxValue - $this->minValue) * 100).'%" ' .
-							'x2="100%" ' .
-							'y2="'.(($this->maxValue - $this->averages['total']) / ($this->maxValue - $this->minValue) * 100).'%" ' .
-						'/>' . "\n"
-					;
-				}
-				foreach($this->averages as $key => $value) {
-					if($value !== false && $key !== 'total') {
-						echo
-							'<line ' .
-								'class="averageLine'.$key.'" ' .
-								'x1="0" ' .
-								'y1="'.(($this->maxValue - $this->averages[$key]) / ($this->maxValue - $this->minValue) * 100).'%" ' .
-								'x2="100%" ' .
-								'y2="'.(($this->maxValue - $this->averages[$key]) / ($this->maxValue - $this->minValue) * 100).'%" ' .
-							'/>' . "\n"
-						;
-					}
-				}
+	            if ($this->maxValue - $this->minValue !== 0) {
+                    if(isset($this->averages['total'])) {
+                        echo
+                            '<line ' .
+                            'id="totalAverageLine" ' .
+                            'x1="0" ' .
+                            'y1="'.(($this->maxValue - $this->averages['total']) / ($this->maxValue - $this->minValue) * 100).'%" ' .
+                            'x2="100%" ' .
+                            'y2="'.(($this->maxValue - $this->averages['total']) / ($this->maxValue - $this->minValue) * 100).'%" ' .
+                            '/>' . "\n"
+                        ;
+                    }
+                    foreach($this->averages as $key => $value) {
+                        if($value !== false && $key !== 'total') {
+                            echo
+                                '<line ' .
+                                'class="averageLine'.$key.'" ' .
+                                'x1="0" ' .
+                                'y1="'.(($this->maxValue - $this->averages[$key]) / ($this->maxValue - $this->minValue) * 100).'%" ' .
+                                'x2="100%" ' .
+                                'y2="'.(($this->maxValue - $this->averages[$key]) / ($this->maxValue - $this->minValue) * 100).'%" ' .
+                                '/>' . "\n"
+                            ;
+                        }
+                    }
+                }
 			}
 			private function outputMovingAverages() {
 				if(isset($this->movingAverages['total'])) {
