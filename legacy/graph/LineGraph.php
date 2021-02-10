@@ -562,7 +562,7 @@ class LineGraph {
 				echo '</g>' . "\n";
 			}
 			private function outputAverages() {
-				if(isset($this->averages['total'])) {
+				if(isset($this->averages['total']) && ($this->maxValue - $this->minValue !== 0)) {
 					echo
 						'<line ' .
 							'id="totalAverageLine" ' .
